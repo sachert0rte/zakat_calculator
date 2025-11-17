@@ -36,31 +36,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.about) {
-
             Intent intent = new Intent(this, com.example.zakatcalculator.AboutActivity.class);
             startActivity(intent);
-
         } else if (item.getItemId() == R.id.settings) {
-
             Toast.makeText(this, "This is settings", Toast.LENGTH_LONG).show();
-
         } else if (item.getItemId() == R.id.search) {
-
             Toast.makeText(this, "This is search", Toast.LENGTH_LONG).show();
-
-        }
-
-        else if (item.getItemId() == R.id.share) {
+        } else if (item.getItemId() == R.id.share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Zakat Calculator App");
-            shareIntent.putExtra(Intent.EXTRA_TEXT,
-                    "Try this Zakat Calculator app! Download now.");
-
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/sachert0rte/zakat_calculator");
             startActivity(Intent.createChooser(shareIntent, "Share via"));
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -68,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getColor(R.color.toolbar_red));
+        }
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -78,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
         keepButton = findViewById(R.id.keepButton);
         wearButton = findViewById(R.id.wearButton);
         btnCalculate = findViewById(R.id.btnCalculate);
+        btnClear = findViewById(R.id.btnClear);
         totalValue = findViewById(R.id.totalValue);
         zakatWeight = findViewById(R.id.zakatWeight);
         zakatPayable = findViewById(R.id.zakatPayable);
         totalZakat = findViewById(R.id.totalZakat);
-        btnClear = findViewById(R.id.btnClear); // Added Clear button reference
 
         btnCalculate.setOnClickListener(v -> {
             try {
@@ -111,33 +103,31 @@ public class MainActivity extends AppCompatActivity {
                 zakatPayable.setText(String.format("RM %.2f", zakatPayableValue));
                 totalZakat.setText(String.format("RM %.2f", totalZakatValue));
 
-            } catch (Exception e) {
+            } catch (NumberFormatException nfe) {
                 Toast.makeText(this, "Please enter valid numbers", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "An error occurred", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Clear button functionality
         btnClear.setOnClickListener(v -> {
-            goldWeight.setText("");
-            goldValue.setText("");
-            goldTypeGroup.clearCheck();
-            totalValue.setText("");
-            zakatWeight.setText("");
-            zakatPayable.setText("");
-            totalZakat.setText("");
+            try {
+                goldWeight.setText("");
+                goldValue.setText("");
+                goldTypeGroup.clearCheck();
+                totalValue.setText("");
+                zakatWeight.setText("");
+                zakatPayable.setText("");
+                totalZakat.setText("");
+            } catch (Exception e) {
+                Toast.makeText(this, "Error clearing fields", Toast.LENGTH_SHORT).show();
+            }
         });
-
-        if (goldWeight.getText().toString().isEmpty() ||
-                goldValue.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
     }
 }

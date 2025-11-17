@@ -19,25 +19,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ToolbarIconWhite"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
         />
 
     <!-- Input Fields -->
 
     <EditText
         android:id="@+id/goldWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
         android:hint="input here"
         android:inputType="numberDecimal"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.162" />
 
     <TextView
         android:id="@+id/goldTypetv"
@@ -51,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        app:layout_constraintVertical_bias="0.263" />
 
     <TextView
         android:id="@+id/goldValuetv"
@@ -67,6 +68,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.409" />
 
+    <!-- CardView for Results -->
+
     <TextView
         android:id="@+id/goldWeighttv"
         android:layout_width="wrap_content"
@@ -79,18 +82,17 @@
         app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.125" />
 
-    <!-- CardView for Results -->
     <EditText
         android:id="@+id/goldValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
         android:hint="input here"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.451" />
@@ -115,11 +117,18 @@
             android:showDividers="middle">
 
             <TextView
+                android:id="@+id/zakatWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+
+            <TextView
                 android:id="@+id/totalValuetv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="10sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="20sp"
                 android:text="Total Gold Value:"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -135,31 +144,11 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/zakatWeighttv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="10sp"
-                android:text="Gold Weight:"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/zakatWeight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="10sp"
-                android:textColor="#B71C1C"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/zakatPayabletv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="10sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="20sp"
                 android:text="Zakat Payable:"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -178,8 +167,8 @@
                 android:id="@+id/totalZakattv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="10sp"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="20sp"
                 android:text="Total Zakat:"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -200,6 +189,7 @@
     <!-- RadioGroup for Gold Type -->
 
     <!-- Buttons -->
+
     <RadioGroup
         android:id="@+id/goldTypeGroup"
         android:layout_width="wrap_content"
@@ -210,7 +200,7 @@
         app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308">
+        app:layout_constraintVertical_bias="0.306">
 
         <RadioButton
             android:id="@+id/keepButton"

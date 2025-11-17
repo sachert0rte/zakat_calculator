@@ -20,6 +20,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
 
+
     @Override
     public boolean onSupportNavigateUp() {
         finish();
