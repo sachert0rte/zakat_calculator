@@ -25,7 +25,6 @@
         />
 
     <!-- Input Fields -->
-
     <EditText
         android:id="@+id/goldWeight"
         android:layout_width="98dp"
@@ -69,7 +68,6 @@
         app:layout_constraintVertical_bias="0.409" />
 
     <!-- CardView for Results -->
-
     <TextView
         android:id="@+id/goldWeighttv"
         android:layout_width="wrap_content"
@@ -185,10 +183,6 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- RadioGroup for Gold Type -->
-
-    <!-- Buttons -->
 
     <RadioGroup
         android:id="@+id/goldTypeGroup"
